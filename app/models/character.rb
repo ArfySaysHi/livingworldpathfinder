@@ -5,4 +5,6 @@ class Character < ApplicationRecord
   has_many :feats, through: :character_feats
   has_many :character_traits, class_name: "Character::CharacterTrait", dependent: :destroy
   has_many :traits, through: :character_traits
+  has_many :character_classes, class_name: "Character::CharacterClass", dependent: :destroy
+  has_many :class_entries, through: :character_classes
 end

@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_14_130839) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_14_132510) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "character_classes", force: :cascade do |t|
+    t.bigint "character_id", null: false
+    t.bigint "class_entry_id", null: false
+    t.integer "level", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_character_classes_on_character_id"
+    t.index ["class_entry_id"], name: "index_character_classes_on_class_entry_id"
+  end
 
   create_table "character_feats", force: :cascade do |t|
     t.bigint "character_id", null: false
@@ -54,6 +64,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_14_130839) do
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
+  create_table "class_entries", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "hit_die", default: 10
+    t.integer "skills_per_level", default: 4
+    t.integer "fort_save", default: 0
+    t.integer "ref_save", default: 0
+    t.integer "will_save", default: 0
+    t.integer "bab", default: 100
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feats", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -81,6 +103,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_14_130839) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "character_classes", "characters"
+  add_foreign_key "character_classes", "class_entries"
   add_foreign_key "character_feats", "characters"
   add_foreign_key "character_feats", "feats"
   add_foreign_key "character_statblocks", "characters"

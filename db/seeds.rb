@@ -33,3 +33,14 @@ char_trait = Character::CharacterTrait.new
 char_trait.character_id = char.id
 char_trait.trait_id = t.id
 char_trait.save!
+
+ce = ClassEntry.new
+ce.name = "Fighter"
+ce.fort_save = 2
+ce.save!
+
+char_class = Character::CharacterClass.new
+char_class.character_id = char.id
+char_class.class_entry_id = ce.id
+char_class.level = 1
+char_class.save!
