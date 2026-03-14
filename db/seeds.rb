@@ -8,3 +8,28 @@ char = Character.new
 char.name = 'jeff'
 char.user_id = 1
 char.save!
+
+sb = Character::Statblock.new
+sb.character_id = char.id
+sb.save!
+
+f = Feat.new
+f.name = "Power Attack"
+f.description = "Hit gud"
+f.save!
+
+char_feat = Character::CharacterFeat.new
+char_feat.character_id = char.id
+char_feat.feat_id = f.id
+char_feat.save!
+
+t = Trait.new
+t.name = "Adopted"
+t.description = "Weird parents"
+t.trait_type = "Racial"
+t.save!
+
+char_trait = Character::CharacterTrait.new
+char_trait.character_id = char.id
+char_trait.trait_id = t.id
+char_trait.save!
