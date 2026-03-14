@@ -47,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_14_130839) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name", null: false
+    t.string "deity", default: ""
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
