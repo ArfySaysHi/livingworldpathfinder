@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_14_132510) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_14_162942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -76,6 +76,23 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_14_132510) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "class_entry_class_features", force: :cascade do |t|
+    t.bigint "class_entry_id", null: false
+    t.bigint "class_feature_id", null: false
+    t.integer "level", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["class_entry_id"], name: "index_class_entry_class_features_on_class_entry_id"
+    t.index ["class_feature_id"], name: "index_class_entry_class_features_on_class_feature_id"
+  end
+
+  create_table "class_features", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feats", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -111,4 +128,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_14_132510) do
   add_foreign_key "character_traits", "characters"
   add_foreign_key "character_traits", "traits"
   add_foreign_key "characters", "users"
+  add_foreign_key "class_entry_class_features", "class_entries"
+  add_foreign_key "class_entry_class_features", "class_features"
 end

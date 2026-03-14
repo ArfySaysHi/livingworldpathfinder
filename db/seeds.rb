@@ -44,3 +44,14 @@ char_class.character_id = char.id
 char_class.class_entry_id = ce.id
 char_class.level = 1
 char_class.save!
+
+cf = ClassFeature.new
+cf.name = "Bonus Feats"
+cf.description = "Bonus feats for your fighter boi"
+cf.save!
+
+cecf = ClassEntry::ClassFeature.new
+cecf.level = 1
+cecf.class_feature_id = cf.id
+cecf.class_entry_id = ce.id
+cecf.save!
