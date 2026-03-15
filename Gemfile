@@ -65,7 +65,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem "rspec-rails"
 end
 gem "devise", "~> 5.0"
 
