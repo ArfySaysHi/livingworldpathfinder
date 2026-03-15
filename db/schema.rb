@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_03_14_162942) do
+ActiveRecord::Schema[8.0].define(version: 2026_03_15_130451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -77,9 +77,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_03_14_162942) do
   end
 
   create_table "class_entry_class_features", force: :cascade do |t|
-    t.bigint "class_entry_id", null: false
+    t.integer "level", default: 1
     t.bigint "class_feature_id", null: false
-    t.integer "level", null: false
+    t.bigint "class_entry_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["class_entry_id"], name: "index_class_entry_class_features_on_class_entry_id"

@@ -50,7 +50,7 @@ cf.name = "Bonus Feats"
 cf.description = "Bonus feats for your fighter boi"
 cf.save!
 
-cecf = ClassEntry::ClassFeature.new
+cecf = ClassEntryClassFeature.new
 cecf.level = 1
 cecf.class_feature_id = cf.id
 cecf.class_entry_id = ce.id
